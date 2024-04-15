@@ -77,17 +77,25 @@ public class Person extends Actor
         }
         if(Greenfoot.isKeyDown("down")){
             setLocation(getX(), getY()+1);
-            
-            
+            if(hitWall() == true || hitEdge() == true){
+                setLocation(getX(), getY()-2);
+            }
         }
         if(Greenfoot.isKeyDown("right")){
             setLocation(getX()+1, getY());
-            
-            
+            if(hitWall() == true || hitEdge() == true){
+                setLocation(getX()-2, getY());
+            }
         }
         if(Greenfoot.isKeyDown("left")){
             setLocation(getX()-1, getY());
-            
+            if(hitWall() == true || hitEdge() == true){
+                setLocation(getX()+2, getY());
+           }
+        if (hitBomb == true){
+            World Gameover = new Gameover();
+            Greenfoot.setWorld(Gameover);
+        }
         }
     }
 }
